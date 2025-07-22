@@ -21,10 +21,12 @@ This [OpenArm description](https://github.com/enactic/openarm_description) packa
 The package follows a hierarchical xacro structure with the following organization:
 
 ### Robot (Overarching Structure)
+
 - `robot/openarm_robot.xacro` - Main robot macro that orchestrates all components
 - `robot/v10.urdf.xacro` - Entry point for v10 arm configuration
 
 ### Component Structure
+
 - `arm/` - Arm kinematics, joints, and links
   - `openarm_arm.xacro` - Arm assembly
   - `openarm_macro.xacro` - Arm macro definitions
@@ -40,6 +42,7 @@ The package follows a hierarchical xacro structure with the following organizati
   - `openarm.bimanual.ros2_control.xacro` - Bimanual control interface
 
 ### Configuration Files
+
 - `config/arm/v10/` - v10 arm parameters (kinematics, limits, inertials)
 - `config/body/v10/` - v10 body parameters
 - `config/hand/openarm_hand/` - Hand configuration
@@ -76,6 +79,7 @@ source $ROS_WS/install/setup.bash
 ### Generate URDF Files
 
 #### Single Arm Configuration
+
 ```bash
 # Basic single arm with hand
 xacro $ROS_WS/src/openarm_description/urdf/robot/v10.urdf.xacro arm_type:=v10 bimanual:=false > openarm_single.urdf
@@ -88,6 +92,7 @@ xacro $ROS_WS/src/openarm_description/urdf/robot/v10.urdf.xacro arm_type:=v10 bi
 ```
 
 #### Bimanual Configuration
+
 ```bash
 # Basic bimanual setup
 xacro $ROS_WS/src/openarm_description/urdf/robot/v10.urdf.xacro arm_type:=v10 bimanual:=true > openarm_bimanual.urdf
@@ -104,6 +109,7 @@ xacro $ROS_WS/src/openarm_description/urdf/robot/v10.urdf.xacro arm_type:=v10 bi
 To display the robot in RViz with a simple joint state GUI:
 
 #### Single Arm
+
 ```bash
 # Display single arm with hand
 ros2 launch openarm_description display_openarm.launch.py arm_type:=v10 bimanual:=false
@@ -113,6 +119,7 @@ ros2 launch openarm_description display_openarm.launch.py arm_type:=v10 bimanual
 ```
 
 #### Bimanual
+
 ```bash
 # Display bimanual configuration
 ros2 launch openarm_description display_openarm.launch.py arm_type:=v10 bimanual:=true
@@ -125,14 +132,15 @@ ros2 launch openarm_description display_openarm.launch.py arm_type:=v10 bimanual
 
 Below are some configurable variables for the OpenArm robot description that allows customization when generating URDFs with xacro.
 
-
 ### Core Arguments
+
 - `arm_type` - Arm version (eg.: "v10")
 - `body_type` - Body version (eg.: "v10")
 - `ee_type` - End-effector type (default: "openarm_hand", options: "openarm_hand", "none")
 - `bimanual` - Enable bimanual configuration (default: false)
 
 ### ROS2 Control Arguments
+
 - `ros2_control` - Enable ROS2 control hardware interface (default: false)
 - `use_fake_hardware` - Use fake hardware for simulation (default: false)
 - `fake_sensor_commands` - Enable fake sensor commands (default: false)
@@ -141,6 +149,7 @@ Below are some configurable variables for the OpenArm robot description that all
 - `right_can_interface` - CAN interface for right arm in bimanual setup (default: "can0")
 
 ### Positioning Arguments
+
 - `parent` - Parent frame (default: "world")
 - `xyz` - Position offset (default: "0 0 0")
 - `rpy` - Orientation offset (default: "0 0 0")
