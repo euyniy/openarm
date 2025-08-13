@@ -39,7 +39,7 @@ sudo ip link set can0 type can bitrate 1000000
 sudo ip link set can0 up
 ```
 
-**CAN FD Mode** (Recommended)
+**CAN FD Mode**
 ```bash
 ip link set can0 down
 # configure CAN FD with 5mbps
@@ -47,7 +47,7 @@ sudo ip link set can0 type can bitrate 1000000 dbitrate 5000000 fd on
 sudo ip link set can0 up
 ```
 
-## Option 2: use setup scripts
+### Option 2: use setup scripts
 
 The OpenArm CAN library includes convenient setup scripts, example usage:
 
