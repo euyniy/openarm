@@ -65,7 +65,7 @@ python3 change_baudrate.py --baudrate 5000000 --canid 1 --socketcan can0 --flash
 ## Step 2: Set Zero Position
 
 :::warning
-Physically position the motors to your desired zero position before setting it, especially if you have already assembled the arm! For grippers, the closed position is used as zero.
+Physically position the motors to your desired zero position before setting it, especially if you have already assembled the arm! For grippers, the closed position is used as zero by default.
 :::
 
 Set the zero position for a specific motor:
@@ -77,6 +77,11 @@ Or set zero position for all motors (IDs 001-008):
 ```bash
 ./set_zero.sh can0 -all
 ```
+
+:::tip
+For more accurate zero position setup, use the mechanical limits as reference starting point.
+:::
+
 
 ## Step 3: Verify Motor Communication
 
