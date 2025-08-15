@@ -1,3 +1,5 @@
+#!/bin/bash
+#
 # Copyright 2025 Enactic, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Dependencies
-/node_modules
-
-# Production
-/build
-
-# Generated files
-.docusaurus
-.cache-loader
-static/data/*
-
-# Misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+mkdir -p static/data
+gh issue list \
+  --repo enactic/openarm \
+  --search "is:issue state:open sort:reactions-+1-desc type:Feature reactions:>=1" \
+  --json author,number,reactionGroups,title,updatedAt,url \
+  --limit 20 | \
+    jq '[.[] | select(.reactionGroups[] | select(.content == "THUMBS_UP" and .users.totalCount > 0))] | .[0:5]' \
+      > static/data/popular-issues.json
