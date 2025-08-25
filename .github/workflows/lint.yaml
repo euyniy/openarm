@@ -20,7 +20,7 @@ on:
       - '!dependabot/**'
   pull_request:
 jobs:
-  typecheck:
+  lint:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -36,3 +36,5 @@ jobs:
         run: npm ci
       - name: Check type
         run: npm run typecheck
+      - name: Run ESLint
+        run: npm run lint
