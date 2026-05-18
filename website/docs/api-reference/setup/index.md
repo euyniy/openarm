@@ -22,4 +22,4 @@ Make sure you have motors and communication devices at your hands.
 
 - For motor control and further setup
   - SocketCAN-compatible interface device
-  - Computer running Ubuntu 22.04/24.04 or other linux with SocketCAN support ([Install Ubuntu →](../ubuntu/))
+  - Computer running Ubuntu 22.04/24.04 or other linux with SocketCAN support
