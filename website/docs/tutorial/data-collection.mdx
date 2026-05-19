@@ -25,7 +25,7 @@ Sideload the APK onto your Quest 3 via Developer Hub.
    <BlockImage src="tutorial/data-collection/in_vr_default.jpg" alt="Quest headset" width="90%" />
 
 2. Press the left controller menu button — a settings panel will appear.
-   <BlockImage src="tutorial/data-collection/in_vr_setting.jpg" alt="VR menu" width="90%" />
+   <BlockImage src="tutorial/data-collection/in_vr_setting.png" alt="VR menu" width="90%" />
 
 3. Enter the IP address of your PC host and the port (default: `5006`).
 
@@ -51,7 +51,8 @@ Also, this section is useful for testing your VR teleoperation setup and to make
 ### Setup for MuJoCo environment
 
 ```bash
-cd path/to/openarm_vr_teleop
+git clone https://github.com/enactic/dora-openarm-vr.git
+cd dora-openarm-vr
 uv sync
 source .venv/bin/activate
 dora build config/dataflow-mujoco.yaml --uv
@@ -65,7 +66,13 @@ dora run config/dataflow-mujoco.yaml --uv
 
 If VR teleoperation is working properly, you should see the robot arm moving in the MuJoCo environment when you operate the VR controllers.
 
-Also, data collection web UI will open automatically, and you can check the data collection status at `http://localhost:8000`.
+To collect data in mujoco, use the dataflow below.
+
+```bash
+dora run config/dataflow-mujoco-data-collection.yaml --uv
+```
+
+The data collection web UI will open automatically, and you can check the data collection status at `http://localhost:8000`.
 
 <BlockImage src="tutorial/data-collection/mujoco_datacollection.gif" alt="MuJoCo teleoperation" />
 
@@ -105,7 +112,7 @@ If you want to change the data path, you can change the value of `DIRECTORY` in 
   build: pip install -e node/dora-openarm-dataset-recorder
   path: dora-openarm-dataset-recorder
   env:
-    METADATA_FILE: "../test_metadata.yaml"
+    METADATA_FILE: "test_metadata.yaml"
     DIRECTORY: "test_data/mujoco_collection"
 ```
 
